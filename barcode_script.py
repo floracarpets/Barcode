@@ -54,7 +54,9 @@ for code in codes:
         ax.imshow(image, aspect='auto', extent=[0.05, 0.95, 0.55, 0.95], transform=ax.transAxes)
 
         # === LARGE TEXT (TRUE VERTICAL STRETCH) ===
-        font_path = "/Library/Fonts/Arial.ttf"  # Change path as needed
+        # font_path = "/Library/Fonts/Arial.ttf"  # Change path as needed this is for macOS
+        font_path = "C:\\Windows\\Fonts\\arial.ttf"  # Change path as needed this is for Windows
+
         font = ImageFont.truetype(font_path, font_pt)
         bbox = font.getbbox(code)
         text_width = bbox[2] - bbox[0]
@@ -96,6 +98,10 @@ for code in codes:
 combined_pdf.close()
 print(f"\n📄 Combined PDF ready: {combined_pdf_name}")
 print("🎉 Completed. Labels generated with large text.")
+
+{
+  "python.autoComplete.extraPaths": []
+}
 
 
 # Note:
