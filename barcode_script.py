@@ -15,7 +15,7 @@ pdf_folder = "labels_pdf"
 combined_pdf_name = "labels_combined.pdf"
 
 # === SETTINGS ===
-dpi = 300
+dpi = 203
 figsize_inch = (5.91, 3.94)  # 150 x 100 mm
 font_pt = 150
 arrow_font = 80
@@ -34,7 +34,7 @@ for code in codes:
         barcode = Code128(code, writer=ImageWriter())
         barcode.write(buffer, {
             "module_height": 35.0,
-            "module_width": 0.21,  # 🔧 CHANGED from 0.1 → 0.21 for better scanner readability
+            "module_width": 2,  # 🔧 CHANGED from 0.1 → 0.21 for better scanner readability
             "quiet_zone": 6.5,     # 🔧 CHANGED from 1.0 → 6.5 to match industry standard quiet zone (10x module_width)
             "write_text": False,
             "dpi": dpi
@@ -55,7 +55,7 @@ for code in codes:
 
         # === LARGE TEXT (TRUE VERTICAL STRETCH) ===
         # font_path = "/Library/Fonts/Arial.ttf"  # Change path as needed this is for macOS
-        font_path = "C:\\Windows\\Fonts\\arial.ttf"  # Change path as needed this is for Windows
+        font_path = "C:\\Windows\\Fonts\\ariblk.ttf"  # Change path as needed this is for Windows
 
         font = ImageFont.truetype(font_path, font_pt)
         bbox = font.getbbox(code)
@@ -79,8 +79,8 @@ for code in codes:
         )
 
         # === ARROWS ===
-        ax.text(0.05, 0.7, "↑", fontsize=arrow_font, ha='center', va='center', transform=ax.transAxes)
-        ax.text(0.95, 0.7, "↑", fontsize=arrow_font, ha='center', va='center', transform=ax.transAxes)
+        ax.text(0.0, 0.7, "↑", fontsize=arrow_font, ha='center', va='center', transform=ax.transAxes)
+        ax.text(1, 0.7, "↑", fontsize=arrow_font, ha='center', va='center', transform=ax.transAxes)
 
         # === SAVE ===
         path = os.path.join(pdf_folder, f"{code}.pdf")
